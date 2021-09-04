@@ -1,10 +1,16 @@
 import siren from "/Users/jamescoholan/Downloads/sirenmain/src/Assets/Siren2.png";
 import "./App.css";
+import Amplify from "aws-amplify";
+import awsconfig from "./aws-exports";
+import { AmplifySignOut, withAuthenticator } from "@aws-amplify/ui-react";
+
+Amplify.configure(awsconfig);
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
+        <AmplifySignOut />
         <img src={siren} className="App-logo" alt="logo" />
 
         <iframe
@@ -28,4 +34,4 @@ function App() {
   );
 }
 
-export default App;
+export default withAuthenticator(App);
